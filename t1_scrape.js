@@ -20,7 +20,7 @@ function (c, a){// t:#s.aon.public 								// <----------those are autocompletes
 		
 		ret = #fs.kbeeb.decorrupt({t:a.t,args:args})       				//send updated arguments object to decorruptor for clean output, update variable 'ret'
 								
-		var key = ret.split(":")[2].split("\n")[0] 					// find keyword, set to variable 'key'
+		var key = ret.split(":")[2].split("\n")[0] 					//find keyword, set to variable 'key'
 		key = key.replace(/['"]+/g, '') 						//strip quotation marks, update variable 'key'
 		
 		var nav = ret.split(":")[0].split("h ")[1] 					//find nav word, set to variable 'nav'
@@ -140,6 +140,6 @@ function (c, a){// t:#s.aon.public 								// <----------those are autocompletes
 				final.push(clean[j].split(",")) 				//pushes uncorrupted locs as individual array entries for final return
 			}
 
-			return final 								// returns our final uncorrupted t1 loc array
+			return final 								//returns our final uncorrupted t1 loc array
 	}	
 }
