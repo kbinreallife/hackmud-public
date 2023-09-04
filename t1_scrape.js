@@ -1,4 +1,4 @@
-function (c, a){										// t:#s.aon.public // <----------those are autocompletes that other players will see
+function (c, a){// t:#s.aon.public 								// <----------those are autocompletes that other players will see
 
 	if(!a || !a.t){ 									//if the user has input no arguments, or if arguments are not {t:}, return usage docs
 
