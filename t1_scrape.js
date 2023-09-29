@@ -66,6 +66,7 @@ function (c, a) {
         ret = #fs.kbeeb.decorrupt({ t: a.t, args: args });
         ret = ret.split("\n");
 
+        //Initialize an empty array 'proj' to fill with project names
         var proj = [];
 
         // Iterate over the decorrupted news page to find project names
@@ -124,6 +125,7 @@ function (c, a) {
             }
         }
 
+        //Initialize an empty 'locs' array for storing locations
         var locs = [];
 
         // Iterate over the project names and retrieve location information
