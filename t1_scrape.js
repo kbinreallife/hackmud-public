@@ -9,22 +9,13 @@ usage:
 kbeeb.t1_scrape {t:#s.aon.public}
 
 additional args:
+check:"biglist"  - returns locs from biglist
+check:"names"    - returns usernames found in this corp script
 check:"projects" - returns project names found in this corp script
 check:"news"     - returns news page
 
 kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
-
-to enable spoilers please run kbeeb.t1_scrape{spoilers:true}
-        `;
-    } else if (a.spoilers === true) {
-
-        // Return spoiler-related instructions
-        return `
-check:"biglist"  - returns locs from biglist
-check:"names"    - returns usernames found in this corp script
-
-kbeeb.t1_scrape {t:#s.aon.public,check:"names"}
-        `;
+        `
     }
 
     // Our initial call
