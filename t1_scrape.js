@@ -1,6 +1,6 @@
 function (c, a) {
 
-    // Check there are no args, or args are not t
+    // Check there are no args, or args are not 't'
     if (!a || !a.t) {
 
         // Return usage instructions for the script
@@ -158,6 +158,7 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"names"}
                 case entry.includes("weird lately. "):
                     name = entry.split("ly. ")[1].split(",")[0]
                     names.push(name)
+                    break
                 }
             } catch (e) {
                 return { ok: false, error: "Failed to decorrupt" }
