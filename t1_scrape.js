@@ -19,7 +19,7 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
     }
 
     // Our initial call
-    var ret = a.t.call();
+    let ret = a.t.call();
 
     // Check if the result includes "Shift"
     if (JSON.stringify(ret).includes("Shift")) {
@@ -27,24 +27,24 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
     } else {
 
         // Call a custom function to decorrupt output and store the result in 'ret'
-        var ret = #fs.kbeeb.decorrupt({ t: a.t });
+        let ret = #fs.kbeeb.decorrupt({ t: a.t });
 
         // Split the decorrupted result to extract 'news' page and 'mission' page
-        var news = ret.split("y.\n")[1].split(" |")[0];
-        var mis = ret.split('W')[1].split(" | ")[1].split(" | ")[0];
+        let news = ret.split("y.\n")[1].split(" |")[0];
+        let mis = ret.split('W')[1].split(" | ")[1].split(" | ")[0];
 
         // Create an empty 'args' object
-        var args = {};
+        let args = {};
 
         // Call npc corp with empty args, and decorrupt output
         ret = #fs.kbeeb.decorrupt({ t: a.t, args: args });
 
         // Split 'ret' to extract 'key' and remove unnecessary characters
-        var key = ret.split(":")[2].split("\n")[0];
+        let key = ret.split(":")[2].split("\n")[0];
         key = key.replace(/['"]+/g, '');
 
         // Extract our navigation key from decorrupted output
-        var nav = ret.split(":")[0].split("h ")[1];
+        let nav = ret.split(":")[0].split("h ")[1];
 
         // set arguments to navigate to mission page
         args[nav] = mis;
@@ -53,7 +53,7 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
         ret = #fs.kbeeb.decorrupt({ t: a.t, args: args });
 
         // Split output to extract password
-        var pass = ret.split("strategy ")[1].split(" ")[0];
+        let pass = ret.split("strategy ")[1].split(" ")[0];
 
         // Set arguments to navigate to news page
         args[nav] = news;
@@ -77,17 +77,14 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
         ret = ret.split("\n");
 
         // Initialize arrays for 'proj', 'names', 'final', and 'clean'
-        var proj = [];
-        var names = [];
-        var final = [];
-        var clean = [];
-
-
+        let proj = [];
+        let names = [];
+        
         //sort through text to find projects, usernames, etc.
         for (var entry of ret) {
-            var found = "";
-            var name = "";
-            var val = entry.includes(found);
+            let found = ""
+            let name = ""
+            let val = entry.includes(found)
 
             try {
                 switch (val) {
@@ -135,8 +132,8 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
                     found = entry.split(" of the ")[1].split(" software")[0]
                     proj.push(found)
                     if(a.check == 'biglist') {
-                        var big = []
-                        var big_final = []
+                        let big = []
+                        let big_final = []
                         args[nav] = found
                         args.list = true
                         big.push(#fs.kbeeb.decorrupt({t:a.t,args:args}))
@@ -159,7 +156,7 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
         // Initialize an empty 'locs' array
         var locs = [];
 
-        for (var i = 0; i < proj.length; i++) {
+        for (let i = 0; i < proj.length; i++) {
 
             // Iterate over project names and specify password
             args.p = pass;
@@ -176,7 +173,7 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
         var clean = [];
 
         //clean and format valid loc array
-        for (var i = 0; i < locs.length; i++) {
+        for (let i = 0; i < locs.length; i++) {
             if (!locs[i].includes(" ") && !locs[i].includes("<")) {
                 clean.push(locs[i]);
             }
@@ -205,7 +202,7 @@ kbeeb.t1_scrape {t:#s.aon.public,check:"projects"}
         }
 
         //Iterate through location information and format in list seperated by newline instead of comma
-        for (var j = 0; j < clean.length; j++) {
+        for (let j = 0; j < clean.length; j++) {
             final.push(clean[j].split(","));
         }
 
